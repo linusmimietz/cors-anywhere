@@ -2,8 +2,8 @@
 var host = process.env.HOST || "0.0.0.0";
 // Listen on a specific port via the PORT environment variable
 var port = process.env.PORT || 8080;
-// Require headers via the REQUIRE_HEADER environment variable
-var requireHeader = process.env.REQUIRE_HEADER || ["origin", "x-requested-with"];
+// Require headers via the CORSANYWHERE_REQUIRE_HEADER environment variable but convert environment variable as list
+var requireHeader = parseEnvList(process.env.CORSANYWHERE_REQUIRE_HEADER) || ["origin", "x-requested-with"];
 
 // Grab the blacklist from the command-line so that we can update the blacklist without deploying
 // again. CORS Anywhere is open by design, and this blacklist is not used, except for countering
